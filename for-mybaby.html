@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>For Jisa ❤️</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        #landing {
+            padding: 20px;
+            color: white;
+        }
+        h1 {
+            font-size: clamp(42px, 10vw, 70px);
+            margin-bottom: 12px;
+        }
+        p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+        button {
+            border: none;
+            border-radius: 50px;
+            padding: 15px 35px;
+            font-size: 18px;
+            font-weight: bold;
+            background: white;
+            color: #e75480;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        button:active {
+            transform: scale(0.97);
+        }
+        #game {
+            display: none;
+            max-width: 500px;
+            margin: 20px;
+            padding: 20px;
+            background: white;
+            border-radius: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        .screen {
+            display: none;
+        }
+        .screen.active {
+            display: block;
+        }
+        .title {
+            font-size: 28px;
+            color: #c0215e;
+            margin: 20px 0;
+        }
+        .btn {
+            background: #ff6b8a;
+            color: white;
+            padding: 12px 25px;
+            margin: 10px;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .big-emoji {
+            font-size: 70px;
+            margin: 20px 0;
+        }
+        .heart {
+            font-size: 80px;
+            animation: heartbeat 1s infinite;
+        }
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+        .video-btn {
+            background: linear-gradient(135deg, #ff6b8a, #ff3d6b);
+            color: white;
+            padding: 15px 30px;
+            font-size: 18px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            border-radius: 50px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="landing">
+    <h1>For Jisa ❤️</h1>
+    <p>A little surprise made just for you 🌸</p>
+    <button id="openBtn">Open My Surprise ✨</button>
+</div>
+
+<div id="game">
+    <div id="screen1" class="screen active">
+        <div class="big-emoji">🌸</div>
+        <div class="title">Hi baby! 🥺</div>
+        <p style="color: #7a5070; margin: 15px 0;">I made this just for you because you deserve something cute 💕</p>
+        <button id="continueBtn" class="btn">Continue 🐻</button>
+    </div>
+
+    <div id="screen2" class="screen">
+        <div class="big-emoji">🐻</div>
+        <div class="title">One question...</div>
+        <p style="color: #7a5070; margin: 15px 0;">Will you go on a date with me? 🌹</p>
+        <button id="yesBtn" class="btn">YES! 🥰</button>
+        <button id="noBtn" class="btn" style="background: #ccc;">No 🙈</button>
+        <p id="noMsg" style="color: #999; margin-top: 15px;"></p>
+    </div>
+
+    <div id="screen3" class="screen">
+        <div class="heart">💖</div>
+        <div class="title">You said YES!! 🎉</div>
+        <p style="color: #7a5070;">You just made me the happiest person 🥺💕</p>
+        <a href="https://youtu.be/v657ooStxbU" target="_blank" class="video-btn">
+            ▶️ Watch my surprise for you
+        </a>
+        <p style="margin-top: 20px; color: #c09ab0;">✨ From me, just for you ✨</p>
+    </div>
+</div>
+
+<script>
+    // Wait for the page to fully load
+    document.addEventListener('DOMContentLoaded', function() {
+        
+        // Button 1: Open surprise from landing page
+        var openBtn = document.getElementById('openBtn');
+        if (openBtn) {
+            openBtn.addEventListener('click', function() {
+                document.getElementById('landing').style.display = 'none';
+                document.getElementById('game').style.display = 'block';
+            });
+        }
+        
+        // Button 2: Continue button
+        var continueBtn = document.getElementById('continueBtn');
+        if (continueBtn) {
+            continueBtn.addEventListener('click', function() {
+                document.getElementById('screen1').classList.remove('active');
+                document.getElementById('screen2').classList.add('active');
+            });
+        }
+        
+        // Button 3: YES button
+        var yesBtn = document.getElementById('yesBtn');
+        if (yesBtn) {
+            yesBtn.addEventListener('click', function() {
+                document.getElementById('screen2').classList.remove('active');
+                document.getElementById('screen3').classList.add('active');
+            });
+        }
+        
+        // Button 4: NO button with moving effect
+        var noBtn = document.getElementById('noBtn');
+        var noClickCount = 0;
+        var noMessages = ["Ngaa nag no ka baby!!!","Nd pwedee no bleee","Nd gani mag no!!","Baby pleaseeee 🥺","Sigihon mogid no ya!!","Okay wala na No! Say yes na!! 🥺💕""];
+        
+        if (noBtn) {
+            noBtn.addEventListener('click', function() {
+                noClickCount++;
+                
+                if (noClickCount <= 5) {
+                    // Move the button randomly
+                    var maxX = 150;
+                    var maxY = 100;
+                    var x = (Math.random() > 0.5 ? 1 : -1) * (30 + Math.random() * maxX);
+                    var y = (Math.random() > 0.5 ? 1 : -1) * (20 + Math.random() * maxY);
+                    noBtn.style.transform = 'translate(' + x + 'px, ' + y + 'px)';
+                    
+                    // Show message
+                    var noMsg = document.getElementById('noMsg');
+                    if (noMsg) {
+                        noMsg.textContent = noMessages[Math.min(noClickCount - 1, noMessages.length - 1)];
+                    }
+                }
+                
+                // Hide the No button after 5 clicks
+                if (noClickCount >= 5) {
+                    noBtn.style.display = 'none';
+                    var noMsg = document.getElementById('noMsg');
+                    if (noMsg) {
+                        noMsg.textContent = "The No button gave up! Just say YES baby! 🥺💕";
+                    }
+                }
+            });
+        }
+        
+    });
+</script>
+
+</body>
+</html>
