@@ -18,7 +18,6 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 20px;
         }
         #landing {
             padding: 20px;
@@ -60,7 +59,7 @@
         #game {
             display: none;
             max-width: 500px;
-            margin: 20px auto;
+            margin: 20px;
             padding: 30px 20px;
             background: white;
             border-radius: 30px;
@@ -114,12 +113,13 @@
         .no-btn {
             background: #ccc;
             color: #666;
-            position: relative;
             transition: all 0.2s ease;
+            position: relative;
         }
         #noMsg {
-            color: #999;
+            color: #e75480;
             margin-top: 15px;
+            font-weight: bold;
             min-height: 50px;
         }
     </style>
@@ -133,9 +133,8 @@
     <button id="openBtn">Open My Surprise ✨</button>
 </div>
 
-<!-- MAIN GAME -->
+<!-- MAIN GAME - DIREKTA NA SA DATE QUESTION -->
 <div id="game">
-    <!-- SCREEN 1: INTRO -->
     <div id="screen1" class="screen active">
         <div class="big-emoji">🌸</div>
         <div class="title">Hi baby! 🥺</div>
@@ -143,17 +142,15 @@
         <button id="continueBtn" class="btn">Continue 🐻</button>
     </div>
 
-    <!-- SCREEN 2: QUESTION -->
     <div id="screen2" class="screen">
-        <div class="big-emoji">🐻</div>
+        <div class="big-emoji">🐻❤️</div>
         <div class="title">One question...</div>
-        <p style="color: #7a5070; margin: 15px 0;">Will you go on a date with me? 🌹</p>
+        <p style="color: #7a5070; margin: 15px 0; font-size: 20px; font-weight: bold;">Will you go on a date with me? 🌹</p>
         <button id="yesBtn" class="btn">YES! 🥰</button>
         <button id="noBtn" class="btn no-btn">No 🙈</button>
         <div id="noMsg"></div>
     </div>
 
-    <!-- SCREEN 3: FINALE -->
     <div id="screen3" class="screen">
         <div class="heart">💖</div>
         <div class="title">You said YES!! 🎉</div>
@@ -166,46 +163,48 @@
 </div>
 
 <script>
-    // Simple direct functions - no complications
-    function hideLanding() {
+    // SIMPLE FUNCTIONS - DIRECT APPROACH
+    function hideLandingAndShowGame() {
         document.getElementById('landing').style.display = 'none';
         document.getElementById('game').style.display = 'block';
     }
     
-    function showQuestion() {
+    function goToDateQuestion() {
         document.getElementById('screen1').classList.remove('active');
         document.getElementById('screen2').classList.add('active');
     }
     
-    function showFinale() {
+    function goToFinale() {
         document.getElementById('screen2').classList.remove('active');
         document.getElementById('screen3').classList.add('active');
     }
     
-    // Set up buttons when page loads
+    // Setup buttons when page loads
     document.addEventListener('DOMContentLoaded', function() {
-        // Button 1: Open surprise
+        
+        // Open button
         var openBtn = document.getElementById('openBtn');
         if (openBtn) {
-            openBtn.onclick = hideLanding;
+            openBtn.onclick = hideLandingAndShowGame;
         }
         
-        // Button 2: Continue
+        // Continue button
         var continueBtn = document.getElementById('continueBtn');
         if (continueBtn) {
-            continueBtn.onclick = showQuestion;
+            continueBtn.onclick = goToDateQuestion;
         }
         
-        // Button 3: Yes button
+        // YES button
         var yesBtn = document.getElementById('yesBtn');
         if (yesBtn) {
-            yesBtn.onclick = showFinale;
+            yesBtn.onclick = goToFinale;
         }
         
-        // Button 4: No button with funny moving effect
+        // NO button with your custom messages
         var noBtn = document.getElementById('noBtn');
-        var clickCount = 0;
-        var messages = [
+        var noClickCount = 0;
+        
+        var noMessages = [
             "Ngaa nag no ka baby!!!",
             "Nd pwedee no bleee",
             "Nd gani mag no!!",
@@ -215,44 +214,46 @@
         ];
         
         if (noBtn) {
-            noBtn.onclick = function(e) {
-                clickCount++;
+            noBtn.onclick = function() {
+                noClickCount++;
                 
-                // Move the button randomly
-                if (clickCount < 6) {
-                    var randomX = (Math.random() - 0.5) * 200;
-                    var randomY = (Math.random() - 0.5) * 150;
-                    noBtn.style.transform = 'translate(' + randomX + 'px, ' + randomY + 'px)';
-                    noBtn.style.position = 'relative';
+                if (noClickCount <= 5) {
+                    // Move the button randomly
+                    var maxX = 150;
+                    var maxY = 100;
+                    var x = (Math.random() > 0.5 ? 1 : -1) * (30 + Math.random() * maxX);
+                    var y = (Math.random() > 0.5 ? 1 : -1) * (20 + Math.random() * maxY);
+                    noBtn.style.transform = 'translate(' + x + 'px, ' + y + 'px)';
                     
-                    // Show message
-                    var msgDiv = document.getElementById('noMsg');
-                    msgDiv.innerHTML = messages[clickCount - 1];
-                    msgDiv.style.color = '#e75480';
-                    msgDiv.style.fontWeight = 'bold';
+                    // Show your message
+                    var noMsg = document.getElementById('noMsg');
+                    if (noMsg) {
+                        noMsg.textContent = noMessages[Math.min(noClickCount - 1, noMessages.length - 1)];
+                    }
                 }
                 
                 // Hide the No button after 5 clicks
-                if (clickCount >= 5) {
+                if (noClickCount >= 5) {
                     noBtn.style.display = 'none';
-                    var msgDiv = document.getElementById('noMsg');
-                    msgDiv.innerHTML = 'The No button gave up! Just say YES baby! 🥺💕';
+                    var noMsg = document.getElementById('noMsg');
+                    if (noMsg) {
+                        noMsg.textContent = "Okay wala na No! Say yes na!! 🥺💕";
+                    }
                 }
             };
         }
     });
     
-    // Fallback: Also attach to window load
+    // Fallback: Also attach to window load to be extra sure
     window.onload = function() {
-        // Double-check all buttons
         if (document.getElementById('openBtn')) {
-            document.getElementById('openBtn').onclick = hideLanding;
+            document.getElementById('openBtn').onclick = hideLandingAndShowGame;
         }
         if (document.getElementById('continueBtn')) {
-            document.getElementById('continueBtn').onclick = showQuestion;
+            document.getElementById('continueBtn').onclick = goToDateQuestion;
         }
         if (document.getElementById('yesBtn')) {
-            document.getElementById('yesBtn').onclick = showFinale;
+            document.getElementById('yesBtn').onclick = goToFinale;
         }
     };
 </script>
