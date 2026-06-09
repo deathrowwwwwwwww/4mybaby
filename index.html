@@ -1,262 +1,418 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>For Jisa ❤️</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            min-height: 100vh;
-            background: linear-gradient(135deg, #ffdde1, #ee9ca7);
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
-        #landing {
-            padding: 20px;
-            color: white;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, #ffdde1, #ee9ca7);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 100;
-        }
-        h1 {
-            font-size: clamp(42px, 10vw, 70px);
-            margin-bottom: 12px;
-        }
-        p {
-            font-size: 18px;
-            margin-bottom: 30px;
-        }
-        button {
-            border: none;
-            border-radius: 50px;
-            padding: 15px 35px;
-            font-size: 18px;
-            font-weight: bold;
-            background: white;
-            color: #e75480;
-            cursor: pointer;
-            transition: transform 0.2s;
-        }
-        button:active {
-            transform: scale(0.97);
-        }
-        #game {
-            display: none;
-            max-width: 500px;
-            margin: 20px;
-            padding: 30px 20px;
-            background: white;
-            border-radius: 30px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-        }
-        .screen {
-            display: none;
-        }
-        .screen.active {
-            display: block;
-        }
-        .title {
-            font-size: 28px;
-            color: #c0215e;
-            margin: 20px 0;
-        }
-        .btn {
-            background: #ff6b8a;
-            color: white;
-            padding: 12px 25px;
-            margin: 10px;
-            border: none;
-            border-radius: 50px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-        .big-emoji {
-            font-size: 70px;
-            margin: 20px 0;
-        }
-        .heart {
-            font-size: 80px;
-            animation: heartbeat 1s infinite;
-        }
-        @keyframes heartbeat {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.2); }
-        }
-        .video-btn {
-            background: linear-gradient(135deg, #ff6b8a, #ff3d6b);
-            color: white;
-            padding: 15px 30px;
-            font-size: 18px;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-            border-radius: 50px;
-            margin-top: 20px;
-        }
-        .no-btn {
-            background: #ccc;
-            color: #666;
-            transition: all 0.2s ease;
-            position: relative;
-        }
-        #noMsg {
-            color: #e75480;
-            margin-top: 15px;
-            font-weight: bold;
-            min-height: 50px;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>For You, Baby 🌸</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{min-height:100%;background:linear-gradient(160deg,#fff0f6 0%,#fdf6ff 50%,#fff5f0 100%);font-family:'Segoe UI',sans-serif}
+  body{display:flex;justify-content:center;align-items:flex-start;padding:20px 12px 40px}
+  #game{width:100%;max-width:420px;text-align:center;position:relative}
+
+  .screen{display:none;animation:fadeIn 0.6s ease}
+  .screen.active{display:block}
+
+  @keyframes fadeIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+  @keyframes float2{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-12px) rotate(4deg)}}
+  @keyframes pop{0%{transform:scale(0);opacity:0}60%{transform:scale(1.25)}100%{transform:scale(1);opacity:1}}
+  @keyframes heartbeat{0%,100%{transform:scale(1)}50%{transform:scale(1.2)}}
+  @keyframes glow{0%,100%{text-shadow:0 0 10px #ffb3c6,0 0 24px #ff69b4}50%{text-shadow:0 0 22px #ff69b4,0 0 44px #ff1493}}
+  @keyframes slide{from{transform:translateX(-50px);opacity:0}to{transform:translateX(0);opacity:1}}
+  @keyframes rise{from{transform:translateY(40px);opacity:0}to{transform:translateY(0);opacity:1}}
+  @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+  @keyframes twinkle{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.35;transform:scale(0.65)}}
+  @keyframes confettiFall{from{transform:translateY(-30px) rotate(0deg);opacity:1}to{transform:translateY(110vh) rotate(800deg);opacity:0}}
+  @keyframes floatHeart{0%{transform:translateY(0) scale(1);opacity:0.8}100%{transform:translateY(-80px) scale(0.5);opacity:0}}
+  @keyframes shimmer{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+
+  .big-emoji{font-size:76px;animation:float 2.2s ease-in-out infinite;display:inline-block}
+  .bear{font-size:72px;display:inline-block;animation:float2 1.8s ease-in-out infinite;cursor:pointer;user-select:none}
+  .title{font-size:23px;font-weight:700;color:#c0215e;margin:14px 0 8px}
+  .sub{font-size:15px;color:#7a5070;line-height:1.75;margin-bottom:18px}
+  .tag{font-size:12px;font-weight:600;color:#c0215e;background:#ffeef4;padding:5px 16px;border-radius:99px;display:inline-block;margin-bottom:14px;letter-spacing:0.4px}
+
+  .btn{display:inline-block;padding:13px 30px;border-radius:999px;border:none;font-size:15px;font-weight:600;cursor:pointer;transition:transform 0.15s,box-shadow 0.15s;margin:6px;box-shadow:0 4px 14px rgba(0,0,0,0.1)}
+  .btn:hover{transform:scale(1.06);box-shadow:0 6px 20px rgba(0,0,0,0.14)}
+  .btn:active{transform:scale(0.96)}
+  .bp{background:#f9c6d0;color:#8b3a52}
+  .bg{background:#c8f0c8;color:#2e6b2e}
+  .bpu{background:#ddd0f7;color:#5b3a8a}
+  .br{background:linear-gradient(135deg,#ff6b8a,#ff3d6b);color:#fff;font-size:16px;box-shadow:0 4px 18px rgba(255,61,107,0.4)}
+
+  .flower{font-size:30px;display:inline-block;cursor:pointer;animation:float 2s ease-in-out infinite;transition:transform 0.12s}
+  .flower:hover{transform:scale(1.4) rotate(14deg)}
+
+  .petal{font-size:26px;cursor:pointer;border:2.5px solid transparent;border-radius:50%;padding:4px;transition:all 0.2s;display:inline-flex;align-items:center;justify-content:center;width:50px;height:50px}
+  .petal.picked{opacity:0.12;transform:scale(0.5)}
+  .petal:not(.picked):hover{border-color:#f9c6d0;background:#fff0f4;transform:scale(1.14)}
+
+  .bubble{font-size:16px;font-weight:600;padding:10px 22px;border-radius:16px;display:inline-block;margin:8px 0;animation:pop 0.4s ease}
+  .loves{background:#ffeef2;color:#c0215e}
+  .loves-not{background:#f3f3f3;color:#999}
+
+  .pbar-wrap{background:#f0e0ea;border-radius:99px;height:10px;width:82%;margin:6px auto;overflow:hidden}
+  .pbar{height:100%;border-radius:99px;background:linear-gradient(to right,#ffb3c6,#ff4d7e);transition:width 0.35s}
+
+  .qopt{width:90%;max-width:360px;padding:12px 18px;border-radius:13px;border:1.5px solid #e8d0f5;background:#fbf6ff;color:#333;font-size:14px;cursor:pointer;text-align:left;transition:all 0.15s;display:block;margin:0 auto 9px}
+  .qopt:hover{border-color:#b388e8;background:#ede4fc}
+  .qopt.ok{border-color:#74c97a;background:#eafaeb;color:#2e6b2e;font-weight:600}
+  .qopt.no{border-color:#f18a8a;background:#fff0f0;color:#922}
+  .qopt.off{pointer-events:none}
+
+  .speech{background:#fffbe6;border:1.5px solid #ffe066;border-radius:16px;padding:12px 18px;max-width:300px;margin:10px auto;font-size:14px;color:#7a5c00;line-height:1.65;animation:slide 0.4s ease;position:relative}
+  .speech::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:9px solid transparent;border-top-color:#ffe066}
+
+  .mbox{background:#fff5f8;border:1.5px solid #ffc8d8;border-radius:18px;padding:16px 22px;margin:12px auto;max-width:360px;font-size:14px;color:#7a3050;line-height:1.75}
+  .stars{font-size:28px;letter-spacing:6px;margin:8px 0;animation:pop 0.5s ease}
+
+  /* ---- FINALE ---- */
+  .heart-big{font-size:82px;display:inline-block;animation:heartbeat 0.85s ease-in-out infinite}
+  .finale-title{font-size:28px;font-weight:700;color:#c0215e;margin:10px 0 6px;animation:glow 2s ease-in-out infinite}
+
+  .video-card{background:linear-gradient(135deg,#fff0f6,#fce4f5);border:2px solid #ffb3d1;border-radius:22px;padding:22px 20px;margin:16px auto;max-width:360px;position:relative;overflow:hidden;animation:rise 0.7s ease}
+  .video-card::before{content:'✨';position:absolute;top:10px;right:14px;font-size:22px;animation:twinkle 1.5s ease-in-out infinite}
+  .video-card::after{content:'✨';position:absolute;bottom:10px;left:14px;font-size:17px;animation:twinkle 1.5s ease-in-out 0.8s infinite}
+
+  .play-btn{display:inline-flex;align-items:center;gap:12px;padding:15px 34px;border-radius:999px;background:linear-gradient(135deg,#ff6b8a,#ff3d6b);color:#fff;font-size:16px;font-weight:700;cursor:pointer;border:none;margin:12px 0;transition:transform 0.15s;box-shadow:0 5px 22px rgba(255,61,107,0.4);animation:pulse 2s ease-in-out infinite;text-decoration:none}
+  .play-btn:hover{transform:scale(1.08)}
+  .play-icon{width:0;height:0;border-top:10px solid transparent;border-bottom:10px solid transparent;border-left:18px solid #fff;margin-left:2px}
+
+  .shimmer-text{background:linear-gradient(270deg,#ff6b8a,#c0215e,#ff9eb0,#ff6b8a);background-size:300% 300%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:shimmer 3s ease infinite;font-weight:700}
+
+  .confetti-piece{position:fixed;top:-20px;font-size:20px;pointer-events:none;z-index:9999;animation:confettiFall linear forwards}
+  .fheart{position:absolute;pointer-events:none;animation:floatHeart ease-out forwards}
+
+#landing-page{
+position:fixed;inset:0;z-index:99999;
+display:flex;flex-direction:column;
+justify-content:center;align-items:center;
+text-align:center;
+background:linear-gradient(135deg,#ffdde1,#ee9ca7);
+color:white;
+padding:20px;
+}
+#landing-page h1{
+font-size:clamp(42px,10vw,80px);
+margin-bottom:12px;
+}
+#landing-page p{font-size:18px;margin-bottom:24px}
+#enter-btn{
+border:none;border-radius:999px;
+padding:16px 34px;
+font-size:18px;font-weight:bold;
+cursor:pointer;
+background:white;color:#e75480;
+}
+
+</style>
 </head>
 <body>
 
-<!-- LANDING PAGE -->
-<div id="landing">
-    <h1>For Jisa ❤️</h1>
-    <p>A little surprise made just for you 🌸</p>
-    <button id="openBtn">Open My Surprise ✨</button>
+<div id="landing-page">
+<h1>For Jisa ❤️</h1>
+<p>A little surprise made just for you 🌸</p>
+<button id="enter-btn" onclick="openSurprise()">Open My Surprise ✨</button>
 </div>
 
-<!-- MAIN GAME - DIREKTA NA SA DATE QUESTION -->
 <div id="game">
-    <div id="screen1" class="screen active">
-        <div class="big-emoji">🌸</div>
-        <div class="title">Hi baby! 🥺</div>
-        <p style="color: #7a5070; margin: 15px 0;">I made this just for you because you deserve something cute 💕</p>
-        <button id="continueBtn" class="btn">Continue 🐻</button>
+
+<!-- INTRO -->
+<div id="s-intro" class="screen active">
+  <div style="height:18px"></div>
+  <div class="tag">💌 For you, baby</div>
+  <div class="big-emoji">🌸</div>
+  <div class="title">Hi baby 🥺</div>
+  <div class="sub">I made this just for you<br>because you deserve something cute 💕<br>Play along… the end is worth it 😏</div>
+  <div style="display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin:16px 0">
+    <span class="flower" style="animation-delay:0s">🌻</span>
+    <span class="flower" style="animation-delay:0.25s">🌺</span>
+    <span class="flower" style="animation-delay:0.5s">🌹</span>
+    <span class="flower" style="animation-delay:0.75s">🌷</span>
+    <span class="flower" style="animation-delay:1s">💐</span>
+    <span class="flower" style="animation-delay:1.25s">🌸</span>
+  </div>
+  <button class="btn bp" onclick="go('s-bear')">Open your surprise 🐻</button>
+</div>
+
+<!-- BEAR TEASE -->
+<div id="s-bear" class="screen">
+  <div style="height:10px"></div>
+  <div class="tag">Stage 1 of 4 🐾</div>
+  <div id="bspeech" class="speech">"Psst… tap me. I have secrets 😏🐻"</div>
+  <div style="height:10px"></div>
+  <div class="bear" id="bear" onclick="tapBear()">🐻</div>
+  <div style="font-size:14px;color:#9a709a;margin-top:16px">Tap the bear to unlock secrets 👆</div>
+  <div id="btaps" style="font-size:12px;color:#b388e8;margin-top:8px;min-height:18px"></div>
+  <div id="bnext" style="display:none;margin-top:18px">
+    <button class="btn bp" onclick="go('s-pluck')">Next 🌸</button>
+  </div>
+</div>
+
+<!-- PLUCK -->
+<div id="s-pluck" class="screen">
+  <div style="height:10px"></div>
+  <div class="tag">Stage 2 of 4 🌼</div>
+  <div style="font-size:60px;display:inline-block;animation:float 2s ease-in-out infinite">🌼</div>
+  <div class="title">Pluck the petals...</div>
+  <div class="sub">The flower always knows 🌼</div>
+  <div id="panswer" class="bubble loves" style="visibility:hidden;min-width:210px"></div>
+  <div style="display:flex;justify-content:center;gap:6px;flex-wrap:wrap;margin:12px 0" id="petals"></div>
+  <div style="font-size:13px;color:#9a709a;margin-top:8px" id="phint">Tap a petal to start...</div>
+  <div id="pnext" style="display:none;margin-top:16px">
+    <button class="btn bg" onclick="go('s-quiz')">Next challenge 🌿</button>
+  </div>
+</div>
+
+<!-- QUIZ -->
+<div id="s-quiz" class="screen">
+  <div style="font-size:50px;display:inline-block;animation:float 2s ease-in-out infinite">🧠</div>
+  <div class="tag">Stage 3 of 4 💜</div>
+  <div class="title">Do you really know me? 😏</div>
+  <div class="pbar-wrap"><div class="pbar" id="qbar" style="width:0%"></div></div>
+  <div style="font-size:13px;color:#9a709a;margin:8px 0 12px" id="qcount">Question 1 of 4</div>
+  <div id="qarea"></div>
+  <div id="qresult" style="display:none;text-align:center;margin-top:12px">
+    <div class="stars" id="qstars"></div>
+    <div class="mbox" id="qmsg"></div>
+    <button class="btn bpu" onclick="go('s-question')">The real question... 💌</button>
+  </div>
+</div>
+
+<!-- THE QUESTION -->
+<div id="s-question" class="screen">
+  <div style="height:14px"></div>
+  <div class="tag">Stage 4 of 4 ❤️</div>
+  <div class="heart-big">❤️</div>
+  <div class="title" style="margin-top:12px">Okay baby... 🥺</div>
+  <div class="mbox">
+    I made this whole silly game<br>just to ask you something... 💌<br><br>
+    <span style="font-size:18px;font-weight:700;color:#c0215e">Will you go on a date with me? 🌹</span>
+  </div>
+  <div style="display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-top:16px;position:relative">
+    <button class="btn br" onclick="sayYes()">Yes!! 🥰</button>
+    <button class="btn bg" id="nobtn" onclick="moveNo()" style="transition:transform 0.3s ease">No 🙈</button>
+  </div>
+  <div id="nomsg" style="font-size:13px;color:#9a709a;margin-top:12px;min-height:22px"></div>
+</div>
+
+<!-- FINALE + VIDEO -->
+<div id="s-yes" class="screen" style="position:relative">
+  <div id="hearts-container" style="position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:hidden"></div>
+  <div style="position:relative;z-index:1">
+    <div style="height:12px"></div>
+    <div class="heart-big">💖</div>
+    <div class="finale-title">You said YES!! 🎉</div>
+    <div class="mbox" style="font-size:14px">
+      You just made me the happiest person 🥺💕<br>
+      I promise to make every moment special,<br>just for you, baby 🌸🌹✨
+    </div>
+    <div style="display:flex;justify-content:center;gap:6px;flex-wrap:wrap;font-size:34px;margin:12px 0">
+      <span style="display:inline-block;animation:float 2s ease-in-out 0s infinite">🌸</span>
+      <span style="display:inline-block;animation:float 2s ease-in-out 0.2s infinite">💕</span>
+      <span style="display:inline-block;animation:float 2s ease-in-out 0.4s infinite">🌺</span>
+      <span style="display:inline-block;animation:float 2s ease-in-out 0.6s infinite">💕</span>
+      <span style="display:inline-block;animation:float 2s ease-in-out 0.8s infinite">🌸</span>
+      <span style="display:inline-block;animation:float 2s ease-in-out 1s infinite">💕</span>
+      <span style="display:inline-block;animation:float 2s ease-in-out 1.2s infinite">🌻</span>
     </div>
 
-    <div id="screen2" class="screen">
-        <div class="big-emoji">🐻❤️</div>
-        <div class="title">One question...</div>
-        <p style="color: #7a5070; margin: 15px 0; font-size: 20px; font-weight: bold;">Will you go on a date with me? 🌹</p>
-        <button id="yesBtn" class="btn">YES! 🥰</button>
-        <button id="noBtn" class="btn no-btn">No 🙈</button>
-        <div id="noMsg"></div>
+    <div class="video-card">
+      <div style="font-size:16px;font-weight:700;color:#8b3a52;margin-bottom:6px">🎬 Your final surprise, baby 💌</div>
+      <div style="font-size:13px;color:#b06080;margin-bottom:16px">I made this just for you 🥺</div>
+      <a class="play-btn" href="https://youtu.be/v657ooStxbU" target="_blank" rel="noopener noreferrer">
+        <div class="play-icon"></div>
+        Watch my surprise for you
+      </a>
+      <div style="font-size:12px;color:#c09ab0;margin-top:10px">tap to open your gift 🎁</div>
     </div>
 
-    <div id="screen3" class="screen">
-        <div class="heart">💖</div>
-        <div class="title">You said YES!! 🎉</div>
-        <p style="color: #7a5070;">You just made me the happiest person 🥺💕</p>
-        <a href="https://youtu.be/v657ooStxbU" target="_blank" class="video-btn">
-            ▶️ Watch my surprise for you
-        </a>
-        <p style="margin-top: 20px; color: #c09ab0;">✨ From me, just for you ✨</p>
+    <div style="font-size:13px;color:#b06080;margin-top:8px" class="shimmer-text">
+      ✨ From me, just for you ✨
     </div>
+  </div>
+</div>
+
 </div>
 
 <script>
-    // SIMPLE FUNCTIONS - DIRECT APPROACH
-    function hideLandingAndShowGame() {
-        document.getElementById('landing').style.display = 'none';
-        document.getElementById('game').style.display = 'block';
-    }
-    
-    function goToDateQuestion() {
-        document.getElementById('screen1').classList.remove('active');
-        document.getElementById('screen2').classList.add('active');
-    }
-    
-    function goToFinale() {
-        document.getElementById('screen2').classList.remove('active');
-        document.getElementById('screen3').classList.add('active');
-    }
-    
-    // Setup buttons when page loads
-    document.addEventListener('DOMContentLoaded', function() {
-        
-        // Open button
-        var openBtn = document.getElementById('openBtn');
-        if (openBtn) {
-            openBtn.onclick = hideLandingAndShowGame;
-        }
-        
-        // Continue button
-        var continueBtn = document.getElementById('continueBtn');
-        if (continueBtn) {
-            continueBtn.onclick = goToDateQuestion;
-        }
-        
-        // YES button
-        var yesBtn = document.getElementById('yesBtn');
-        if (yesBtn) {
-            yesBtn.onclick = goToFinale;
-        }
-        
-        // NO button with your custom messages
-        var noBtn = document.getElementById('noBtn');
-        var noClickCount = 0;
-        
-        var noMessages = [
-            "Ngaa nag no ka baby!!!",
-            "Nd pwedee no bleee",
-            "Nd gani mag no!!",
-            "Baby pleaseeee 🥺",
-            "Sigihon mogid no ya!!",
-            "Okay wala na No! Say yes na!! 🥺💕"
-        ];
-        
-        if (noBtn) {
-            noBtn.onclick = function() {
-                noClickCount++;
-                
-                if (noClickCount <= 5) {
-                    // Move the button randomly
-                    var maxX = 150;
-                    var maxY = 100;
-                    var x = (Math.random() > 0.5 ? 1 : -1) * (30 + Math.random() * maxX);
-                    var y = (Math.random() > 0.5 ? 1 : -1) * (20 + Math.random() * maxY);
-                    noBtn.style.transform = 'translate(' + x + 'px, ' + y + 'px)';
-                    
-                    // Show your message
-                    var noMsg = document.getElementById('noMsg');
-                    if (noMsg) {
-                        noMsg.textContent = noMessages[Math.min(noClickCount - 1, noMessages.length - 1)];
-                    }
-                }
-                
-                // Hide the No button after 5 clicks
-                if (noClickCount >= 5) {
-                    noBtn.style.display = 'none';
-                    var noMsg = document.getElementById('noMsg');
-                    if (noMsg) {
-                        noMsg.textContent = "Okay wala na No! Say yes na!! 🥺💕";
-                    }
-                }
-            };
-        }
-    });
-    
-    // Fallback: Also attach to window load to be extra sure
-    window.onload = function() {
-        if (document.getElementById('openBtn')) {
-            document.getElementById('openBtn').onclick = hideLandingAndShowGame;
-        }
-        if (document.getElementById('continueBtn')) {
-            document.getElementById('continueBtn').onclick = goToDateQuestion;
-        }
-        if (document.getElementById('yesBtn')) {
-            document.getElementById('yesBtn').onclick = goToFinale;
-        }
-    };
-</script>
+var noCount=0,quizScore=0,quizIdx=0,bearTaps=0;
 
+var bearLines=[
+  '"I was told to keep it a secret... but you\'re really special to him 🥺"',
+  '"He thinks about you a lot. Like, a LOT lot 😏💕"',
+  '"He said your smile is his favorite thing 🌸"',
+  '"He also said you\'re dangerous... dangerously cute 😂💗"',
+  '"Okay last one: he really, truly likes you, baby 🥺💖"',
+  '"Now go finish the game. The best part is at the end 😏🐻"'
+];
+
+var Qs=[
+  {q:"What do I do when I miss you?",opts:["Send a random meme 😂","Go quiet and smile","Text you immediately 💬","All of the above 🥺"],c:3,f:"It's always all of the above 💕"},
+  {q:"How do I look at you?",opts:["Like you're everything ✨","Like you hung the stars 🌟","Like you're the whole universe 🌌","Yes, all of them 🥺"],c:3,f:"Every single one. Always. 💖"},
+  {q:"What's my ideal date with you?",opts:["Anywhere, as long as it's you 🥺","Fancy dinner 🍽️","Movie marathon 🎬","Adventure somewhere 🌅"],c:0,f:"Doesn't matter where — it matters that it's you 💕"},
+  {q:"How much do I like you?",opts:["A little bit 😅","Quite a lot","So so much","More than words can ever say 🥺"],c:3,f:"The answer will always be the last one, baby 🌸"}
+];
+
+function go(id){
+  document.querySelectorAll('.screen').forEach(function(s){s.classList.remove('active')});
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0,0);
+  if(id==='s-pluck')setupPetals();
+  if(id==='s-quiz')setupQuiz();
+  if(id==='s-yes'){launchConfetti();launchFloatingHearts();}
+}
+
+function tapBear(){
+  var bear=document.getElementById('bear');
+  var sp=document.getElementById('bspeech');
+  bear.style.animation='none';
+  setTimeout(function(){bear.style.animation='float2 1.8s ease-in-out infinite'},50);
+  if(bearTaps<bearLines.length){
+    sp.textContent=bearLines[bearTaps];
+    sp.style.animation='none';
+    setTimeout(function(){sp.style.animation='slide 0.4s ease'},10);
+    bearTaps++;
+    document.getElementById('btaps').textContent=bearTaps+' / '+bearLines.length+' secrets unlocked';
+  }
+  if(bearTaps>=bearLines.length){
+    document.getElementById('bnext').style.display='block';
+    document.getElementById('btaps').textContent='The bear has said everything 🐻💕';
+  }
+}
+
+function setupPetals(){
+  var c=document.getElementById('petals');c.innerHTML='';
+  var total=10,picked=0;
+  var pa=document.getElementById('panswer'),ph=document.getElementById('phint'),pn=document.getElementById('pnext');
+  for(var i=0;i<total;i++){
+    (function(idx){
+      var btn=document.createElement('span');
+      btn.className='petal';
+      btn.textContent=idx%2===0?'🌸':'🌺';
+      btn.onclick=function(){
+        if(btn.classList.contains('picked'))return;
+        btn.classList.add('picked');picked++;
+        var loves=picked%2===1;
+        pa.textContent=loves?'He loves me! 💗':'He loves me not... 😢';
+        pa.className='bubble '+(loves?'loves':'loves-not');
+        pa.style.visibility='visible';
+        ph.textContent=(total-picked)+' petals left...';
+        if(picked===total){
+          pa.textContent='He LOVES me!! 💖🌸';
+          pa.className='bubble loves';
+          ph.textContent='The flower never lies! 🌼';
+          pn.style.display='block';
+        }
+      };
+      c.appendChild(btn);
+    })(i);
+  }
+}
+
+function setupQuiz(){quizIdx=0;quizScore=0;document.getElementById('qresult').style.display='none';showQ();}
+
+function showQ(){
+  var area=document.getElementById('qarea');
+  if(quizIdx>=Qs.length){
+    area.innerHTML='';
+    var s='';
+    for(var i=0;i<quizScore;i++)s+='⭐';
+    for(var j=quizScore;j<Qs.length;j++)s+='☆';
+    document.getElementById('qstars').textContent=s;
+    var msgs=['Aww nice try baby 😂 But I still like you 💕','Getting there! 🌸','You know me pretty well! 💜','You know me perfectly!! We\'re totally meant to be 💖🌸'];
+    document.getElementById('qmsg').textContent=msgs[quizScore]||msgs[3];
+    document.getElementById('qresult').style.display='block';
+    return;
+  }
+  var q=Qs[quizIdx];
+  document.getElementById('qcount').textContent='Question '+(quizIdx+1)+' of '+Qs.length;
+  document.getElementById('qbar').style.width=(quizIdx/Qs.length*100)+'%';
+  var html='<div style="font-size:15px;font-weight:600;margin-bottom:12px;color:#333">'+q.q+'</div>';
+  q.opts.forEach(function(o,i){html+='<button class="qopt" onclick="ansQ('+i+')">'+o+'</button>';});
+  html+='<div id="qfb" style="font-size:13px;min-height:22px;color:#9a709a;margin-top:6px"></div>';
+  area.innerHTML=html;
+}
+
+function ansQ(idx){
+  var q=Qs[quizIdx];
+  document.querySelectorAll('.qopt').forEach(function(o){o.classList.add('off')});
+  var opts=document.querySelectorAll('.qopt');
+  if(idx===q.c){opts[idx].classList.add('ok');quizScore++;}
+  else{opts[idx].classList.add('no');opts[q.c].classList.add('ok');}
+  document.getElementById('qfb').textContent=idx===q.c?q.f:'Almost! '+q.f;
+  quizIdx++;
+  setTimeout(showQ,1350);
+}
+
+
+var noMsgs = [
+  "Ngaa nag no ka baby!!!",
+  "Nd pwedee no bleee",
+  "Nd gani mag no!!",
+  "Baby pleaseeee 🥺",
+  "Sigihon mogid no ya!!",
+  "Okay wala na No! Say yes na!! 🥺💕"
+];
+
+function moveNo(){
+  noCount++;
+  var btn=document.getElementById('nobtn');
+  var x=(Math.random()>0.5?1:-1)*(70+Math.random()*130);
+  var y=(Math.random()>0.5?1:-1)*(35+Math.random()*70);
+  btn.style.transform='translate('+x+'px,'+y+'px) rotate('+(Math.random()*24-12)+'deg)';
+  document.getElementById('nomsg').textContent=noMsgs[Math.min(noCount-1,noMsgs.length-1)];
+  if(noCount>=5){
+    btn.style.display='none';
+    document.getElementById('nomsg').textContent='Okay wala na No! Say yes na!! 🥺💕';
+  }
+}
+
+function sayYes(){go('s-yes');}
+
+function launchFloatingHearts(){
+  var container=document.getElementById('hearts-container');
+  var emojis=['💕','🌸','💖','✨','🌺','💗','⭐','🌟'];
+  function spawnHeart(){
+    var el=document.createElement('div');
+    el.className='fheart';
+    el.textContent=emojis[Math.floor(Math.random()*emojis.length)];
+    el.style.left=Math.random()*100+'%';
+    el.style.bottom='0';
+    el.style.fontSize=(14+Math.random()*16)+'px';
+    el.style.animationDuration=(2+Math.random()*2.5)+'s';
+    container.appendChild(el);
+    setTimeout(function(){el.remove();},4000);
+  }
+  for(var i=0;i<12;i++){setTimeout(spawnHeart,i*200);}
+  setInterval(spawnHeart,500);
+}
+
+function launchConfetti(){
+  var emojis=['🌸','💖','⭐','🎉','🌟','🌺','💋','🐻','💕','✨','🎊'];
+  for(var i=0;i<40;i++){
+    (function(idx){
+      setTimeout(function(){
+        var el=document.createElement('div');
+        el.className='confetti-piece';
+        el.textContent=emojis[Math.floor(Math.random()*emojis.length)];
+        el.style.left=Math.random()*100+'vw';
+        el.style.animationDuration=(1.6+Math.random()*2)+'s';
+        el.style.fontSize=(12+Math.random()*20)+'px';
+        document.body.appendChild(el);
+        setTimeout(function(){el.remove();},4000);
+      },idx*60);
+    })(i);
+  }
+}
+
+function openSurprise(){
+ var lp=document.getElementById('landing-page');
+ if(lp){ lp.style.display='none'; }
+ window.scrollTo(0,0);
+}
+
+</script>
 </body>
 </html>
